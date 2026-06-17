@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ForoEstudiantil" default="dist" basedir=".">
+    <description>Builds, tests, and runs the project ForoEstudiantil.</description>
+
+    <property name="build.dir"         value="build"/>
+    <property name="build.web.dir"     value="${build.dir}/web"/>
+    <property name="build.classes.dir" value="${build.web.dir}/WEB-INF/classes"/>
+    <property name="src.dir"           value="src/java"/>
+    <property name="web.dir"           value="web"/>
+    <property name="dist.dir"          value="dist"/>
+    <property name="dist.war"          value="${dist.dir}/ForoEstudiantil.war"/>
+    <property name="tomcat.home"       value="C:/apache-tomcat-10.1.55/apache-tomcat-10.1.55"/>
+
+    <target name="init">
+        <mkdir dir="${build.classes.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}"
+               destdir="${build.classes.dir}"
+               source="1.8"
+               target="1.8"
+               debug="true"
+               encoding="UTF-8"
+               includeantruntime="false">
+            <classpath>
+                <fileset dir="${web.dir}/WEB-INF/lib">
+                    <include name="*.jar"/>
+                </fileset>
+                <fileset dir="${tomcat.home}/lib">
+                    <include name="*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="war" depends="compile">
+        <copy todir="${build.web.dir}">
+            <fileset dir="${web.dir}"/>
+        </copy>
+        <war destfile="${dist.war}"
+             webxml="${web.dir}/WEB-INF/web.xml"
+             basedir="${build.web.dir}"/>
+    </target>
+
+    <target name="dist" depends="clean,war">
+        <echo message="BUILD SUCCESS - ForoEstudiantil.war listo en ${dist.dir}"/>
+    </target>
+
+    <target name="default" depends="dist"/>
+</project>

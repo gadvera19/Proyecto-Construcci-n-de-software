@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ForoEstudiantil-impl" default="default" basedir="..">
+    <property file="nbproject/private/private.properties"/>
+    <property file="nbproject/project.properties"/>
+
+    <target name="default" depends="-do-init,compile,war" description="Build whole project."/>
+
+    <target name="-do-init">
+        <property name="build.dir" value="build"/>
+        <property name="build.web.dir" value="${build.dir}/web"/>
+        <property name="build.classes.dir" value="${build.web.dir}/WEB-INF/classes"/>
+        <property name="src.dir" value="src/java"/>
+        <property name="web.docbase.dir" value="web"/>
+        <property name="dist.dir" value="dist"/>
+        <property name="dist.war" value="${dist.dir}/ForoEstudiantil.war"/>
+        <mkdir dir="${build.classes.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="compile" depends="-do-init">
+        <javac srcdir="${src.dir}"
+               destdir="${build.classes.dir}"
+               source="1.8"
+               target="1.8"
+               debug="true"
+               encoding="UTF-8"
+               includeantruntime="false">
+            <classpath>
+                <fileset dir="${web.docbase.dir}/WEB-INF/lib">
+                    <include name="*.jar"/>
+                </fileset>
+                <pathelement path="${java.class.path}"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="war" depends="compile">
+        <copy todir="${build.web.dir}">
+            <fileset dir="${web.docbase.dir}"/>
+        </copy>
+        <war destfile="${dist.war}" webxml="${web.docbase.dir}/WEB-INF/web.xml">
+            <fileset dir="${build.web.dir}"/>
+        </war>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <import file="ant-deploy.xml" optional="true"/>
+</project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ForoEstudiantil-deploy" default="default" basedir="..">
+    <target name="default"/>
+    <target name="-pre-dist"/>
+    <target name="-post-dist"/>
+    <target name="pre-run-deploy"/>
+    <target name="post-run-deploy"/>
+    <target name="pre-undeploy"/>
+    <target name="post-undeploy"/>
+    <target name="-pre-run-deploy-initialize"/>
+    <target name="-do-run-deploy"/>
+    <target name="-post-run-deploy"/>
+    <target name="-run-deploy-ant"/>
+    <target name="-undeploy-ant"/>
+    <target name="-init-deploy"/>
+</project>

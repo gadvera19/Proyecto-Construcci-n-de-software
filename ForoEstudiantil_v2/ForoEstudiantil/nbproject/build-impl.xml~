@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ForoEstudiantil-impl" basedir="..">
+    <property file="nbproject/private/private.properties"/>
+    <property file="nbproject/project.properties"/>
+    <target name="-pre-init"/>
+    <target name="-init-private"/>
+    <target name="-init-user"/>
+    <target name="-init-project"/>
+    <target name="-do-init"/>
+    <target name="-post-init"/>
+    <target name="-init-check"/>
+    <target name="-init-macrodef-property"/>
+</project>

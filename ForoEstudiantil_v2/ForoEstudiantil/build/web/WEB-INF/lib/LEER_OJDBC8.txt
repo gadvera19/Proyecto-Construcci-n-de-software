@@ -1,0 +1,5 @@
+INSTRUCCIONES PARA ojdbc8.jar:
+1. Descarga ojdbc8.jar desde: https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html
+2. O pídele el archivo a tu profesor
+3. Colócalo en: web/WEB-INF/lib/ojdbc8.jar
+4. En NetBeans: clic derecho en Libraries → Add JAR → seleccionar ojdbc8.jar
